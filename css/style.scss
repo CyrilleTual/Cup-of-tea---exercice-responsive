@@ -1,0 +1,77 @@
+/*
+ _____ _       _           _ 
+|  __ | |     | |         | |
+| |  \| | ___ | |__   __ _| |
+| | __| |/ _ \| '_ \ / _` | |
+| |_\ | | (_) | |_) | (_| | |
+ \____|_|\___/|_.__/ \__,_|_|*/
+
+@mixin imageFond($url) {
+    background-size: cover;
+    background-position: center;
+    background-image: url($url);
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+
+  /*background-color: pink;*/
+}
+
+body {
+  font-size: 1.8rem;
+  margin: 0; /*enleve la marge autour de la page */
+  background-color: pink;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*
+  _                    _           
+ | |                  | |          
+ | |__   ___  __ _  __| | ___ _ __ 
+ | '_ \ / _ \/ _` |/ _` |/ _ | '__|
+ | | | |  __| (_| | (_| |  __| |   
+ |_| |_|\___|\__,_|\__,_|\___|_|   
+
+*/
+
+header{
+    @include imageFond ("img/bg.jpg");
+}
+
+
+/*
+   __            _            
+  / _|          | |           
+ | |_ ___   ___ | |_ ___ _ __ 
+ |  _/ _ \ / _ \| __/ _ | '__|
+ | || (_) | (_) | ||  __| |   
+ |_| \___/ \___/ \__\___|_|   
+                              
+*/
+
+//                   _
+//                  (_)
+//   _ __ ___   __ _ _ _ __
+//  | '_ ` _ \ / _` | | '_ \
+//  | | | | | | (_| | | | | |
+//  |_| |_| |_|\__,_|_|_| |_|
