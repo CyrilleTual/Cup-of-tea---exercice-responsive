@@ -8,6 +8,9 @@
   <title>Cup of Tea</title>
   <link rel="icon" type="image/png" href="img/favicon.png">
   <meta name="description" content="Cup of tea thés du monde">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" type="text/css" href="./css/slick.css">
   <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
@@ -16,26 +19,28 @@
 
 <body class="page_index">
   <header>
-    <div class="container">
-      <p>Livraison offerte à partir de 65€ d'achat !</p>
+
+    <img class="angleHt" src="img/ribbon.svg" alt="meilleur thé">
+    <div class="bandeau">
+      <span>Livraison offerte à partir de 65€ d'achat !</span>
     </div>
-    <div class="container">
+
+    <div class="container blocHeader">
       <a href="index.html"><img src="./img/logo.png" alt="logo Cup of tea">
       </a>
       <!-- lien vers le pannier -->
-      <a href="#">
-        <span>Mon Panier</span>
+      <a href="#" class="lienPanier">
+        <span class="txt">Mon Panier</span>
         <div>
-          <!-- ici inserer le logo caddie -->
-          <i></i>
-          <span>42,00</span>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>42,00 €</span>
         </div>
       </a>
       <nav>
         <ul>
           <li><a href="listing.html">Thés</a></li>
           <li><a href="product.html">Grands crus</a></li>
-          <li><a href="#"></a>accessoires</li>
+          <li><a href="#">accessoires</a></li>
           <li><a href="#">&#201;picerie</a></li>
           <li><a href="about.html">Notre histoire</a></li>
         </ul>
@@ -68,7 +73,7 @@ ___  ___      _
     <!-- **************************************************************************** -->
     <!-- *********************    section choisissez votre thé  ********************* -->
     <!-- **************************************************************************** -->
-    <section>
+    <section class="choiseThe">
       <h1>Choisissez votre thé</h1>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
@@ -80,47 +85,50 @@ ___  ___      _
         sapiente fugit placeat fugiat.
       </p>
       <!-- *****************   liens vers thés *********************** -->
-      <div>
-        <figures>
-          <a href="">
+      <div class="itemsWrapper">
+        <a href="">
+          <figure>
             <img src="img/tea/1.jpg" alt="thé noir">
             <figcaption>Thé noir</figcaption>
-          </a>
-        </figures>
+          </figure>
+        </a>
 
-        <figures>
-          <a href="">
+        <a href="">
+          <figure>
             <img src="img/tea/2.jpg" alt="thé vert">
             <figcaption>Thé vert</figcaption>
-          </a>
-        </figures>
+          </figure>
+        </a>
 
-        <figures>
-          <a href="">
+        <a href="">
+          <figure>
             <img src="img/tea/3.jpg" alt="thé Oolong">
             <figcaption>Oolong</figcaption>
-          </a>
-        </figures>
+          </figure>
+        </a>
 
-        <figures>
-          <a href="">
+
+        <a href="">
+          <figure>
             <img src="img/tea/4.jpg" alt="Thé blanc">
             <figcaption>Thé blanc</figcaption>
-          </a>
-        </figures>
+          </figure>
+        </a>
 
-        <figures>
-          <a href="">
+
+        <a href="">
+          <figure>
             <img src="img/tea/5.jpg" alt="Rooibos">
             <figcaption>Rooibos</figcaption>
-          </a>
-        </figures>
+          </figure>
+        </a>
+
       </div>
     </section>
     <!-- ********************************************************* -->
     <!-- *****************  section selection *********************-->
     <!-- ********************************************************* -->
-    <section>
+    <section class="container selection">
       <h2>Notre selection</h2>
       <article>
         <h3>Notre nouveauté</h3>
@@ -131,9 +139,9 @@ ___  ___      _
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
           voluptate aperiam magnam illum blanditiis commodi sint magni, ipsa
-          aliquid id velit deserunt. Illum, aliquid obcaecati.<br>A partir
-          de <br><span>8.50€</span>
-        </p>
+          aliquid id velit deserunt. Illum, aliquid obcaecati.</p>
+        <p>A partir</p>
+        <p class="prix">8.50€</p>
         <a href="#">Voir ce produit</a>
       </article>
       <article>
@@ -145,9 +153,9 @@ ___  ___      _
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
           laborum fugit eum accusamus maiores qui asperiores iure vitae non,
-          deserunt pariatur porro eligendi laudantium et..<br>A partir de
-          <br><span>7.60€</span>
-        </p>
+          deserunt pariatur porro eligendi laudantium et...</p>
+        <p>A partir</p>
+        <p class="prix">7.60€</p>
         <a href="# ">Voir ce produit</a>
       </article>
       <article>
@@ -159,9 +167,9 @@ ___  ___      _
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste vitae
           cupiditate quasi possimus perferendis. Ea, necessitatibus veniam.
-          Numquam placeat quia, quasi dolor dignissimos aliquid quam?.<br>A
-          partir de <br><span>9.00€</span>
-        </p>
+          Numquam placeat quia, quasi dolor dignissimos aliquid quam?..</p>
+        <p>A partir</p>
+        <p class="prix">9.00€</p>
         <a href="#">Voir ce produit</a>
       </article>
     </section>
@@ -178,18 +186,23 @@ ___  ___      _
   <footer>
     <div class="infosLarge">
       <!--pour mettre fond vert foncé-->
-      <div class="infos container">
+      <div class="infos">
         <a href="">Paiement sécurisé</a>
         <a href="">Livraison offerte</a>
         <a href="">Carte fidélité</a>
         <a href="">Service client</a>
         <a href="">Garantie qualité</a>
       </div>
+
     </div>
 
-    <div class="infosLarge">
+
+
+    </div>
+
+    <div class="liensLarge">
       <!--pour mettre fond vert clair-->
-      <div class="info container">
+      <div class="liensFooter container">
         <nav class="navFooter">
           <div>
             <strong>Cup of tea</strong>

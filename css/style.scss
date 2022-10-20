@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
 /*
  _____ _       _           _ 
 |  __ | |     | |         | |
@@ -6,13 +8,56 @@
 | |_\ | | (_) | |_) | (_| | |
  \____|_|\___/|_.__/ \__,_|_|*/
 
+// ************ variables ***********
+
+$policeDefault: "Open Sans", sans-serif;
+$policeTitle: "Amaranth", sans-serif;
+
+$policeSize: (
+  body: 1.6rem,
+  noel: 4rem,
+  grosTitre: 3.2rem,
+  moyenTitre: 2.5rem,
+  petitTitre: 2rem,
+  prixPanierHeader: 3rem,
+  prixDansPage: 2.4rem,
+  prixPageProduct: 4rem,
+);
+
+$txtColorDefault: #666;
+$bgDefault: #f2f2f2;
+$bgHeaderFooter: #96b011;
+$txtColorTitle: #96b011;
+$txtColorHeaderNavLink: #fff;
+$bgLienNavHover: rgba(255, 255, 255, 0.2);
+$traitsDerriereTitres: rgba(176, 144, 103, 0.3);
+$bgButtonVoirProduit: #b09067;
+$bgButtonVoirProduitHover: rgba(176, 144, 103, 0.75);
+$bgLivraisonEtFooter: rgba(0, 0, 0, 0.1);
+$bgPanierMobile: #96b011;
+$etoile: #ffdc0f;
+$coeur: #e7877a;
+$bgReassurance: #879e0f;
+$bgDansAbout: rgba(150, 176, 17, 02);
+
+$bgTitres: rgba(255, 255, 255, 0.2);
+
+// *******************  mixins ****************
 @mixin imageFond($url) {
-    background-size: cover;
-    background-position: center;
-    background-image: url($url);
+  background-image: url($url);
+  background-size: cover;
+  background-position: center;
 }
 
+@mixin flex() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+// *************************************************
 
 * {
   box-sizing: border-box;
@@ -23,16 +68,40 @@ html {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
 
   /*background-color: pink;*/
 }
 
 body {
-  font-size: 1.8rem;
+  font-size: map-get($policeSize, body);
+  font-family: $policeDefault;
   margin: 0; /*enleve la marge autour de la page */
-  background-color: pink;
+  background-color: #f2f2f2;
+  color: #666;
+}
+
+section {
+  background-color: white;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  font-family: $policeTitle;
+  color: $txtColorTitle;
+}
+
+h1 {
+  font-size: map-get($policeSize, grosTitre);
+}
+h2 {
+  font-size: map-get($policeSize, moyenTitre);
+}
+h3 {
+  font-size: map-get($policeSize, petitTitre);
 }
 
 ul {
@@ -40,8 +109,18 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: $txtColorHeaderNavLink;
+}
+
 img {
   max-width: 100%;
+  display: inline-block;
+}
+
+.clear {
+  clear: both;
 }
 
 /*
@@ -54,11 +133,68 @@ img {
 
 */
 
-header{
-    @include imageFond ("img/bg.jpg");
+header {
+  // @include imageFond("../img/bg.jpg");
+  background-color: $bgHeaderFooter;
+  text-align: center;
+  color: $txtColorHeaderNavLink;
 }
 
+.angleHt {
+  width: 120px;
+  position: absolute;
+  right: 0px;
+  // display: none;
+}
 
+.bandeau {
+  padding: 5px;
+  background-color: $bgLivraisonEtFooter;
+}
+
+.blocHeader {
+  @include imageFond("../img/bg.jpg");
+  padding-top: 100px;
+  @include flex();
+  ul {
+    @include flex();
+    li {
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      a {
+        padding: 7px;
+        &:hover {
+          background-color: $bgLienNavHover;
+        }
+      }
+    }
+  }
+
+  .lienPanier {
+    display: block;
+    position: fixed;
+    background-color: $bgPanierMobile;
+    font-size: map-get($policeSize, prixPanierHeader);
+    top: 50px;
+    left: 0px;
+    z-index: 10;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: -3px 4px 27px 12px rgba(0, 0, 0, 0.2);
+    border-left: none;
+    border-radius: 0px 200px 200px 0px;
+
+    i {
+      border: solid white 1px;
+      border-radius: 100% 100%;
+      padding: 10px;
+    }
+
+    span.txt {
+      display: none;
+    }
+  }
+}
 /*
    __            _            
   / _|          | |           
@@ -69,9 +205,130 @@ header{
                               
 */
 
+// ************  partie Haute *************
+
+.infosLarge {
+  background-color: $bgHeaderFooter;
+}
+
+.infos {
+  @include flex();
+  flex-direction: row;
+  justify-content: space-between;
+  a {
+    display: inline-block;
+    width: 48%;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+  }
+  a:first-child::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f023";
+    font-size: 50px;
+    display: block;
+    margin: auto;
+
+    // content: "\f023";
+  }
+}
+
+// -**********************   partie milieu  ************************
+.liensLarge {
+  background-color: pink;
+}
+.liensFooter {
+  text-align: center;
+  @include flex();
+  strong {
+    color: white;
+  }
+  a {
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+// *********************  partie basse **************
+.copyrightLarge {
+  background-color: $bgHeaderFooter;
+}
+
+.copyright {
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+  @include imageFond("../img/bg.jpg");
+  img {
+    width: 50px;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
 //                   _
 //                  (_)
 //   _ __ ___   __ _ _ _ __
 //  | '_ ` _ \ / _` | | '_ \
 //  | | | | | | (_| | | | | |
 //  |_| |_| |_|\__,_|_|_| |_|
+
+main {
+  line-height: 1.8;
+}
+
+.page_index aside,
+.page_index .sliderSlick {
+  display: none;
+}
+
+.choiseThe {
+  margin-top: 20px;
+  padding: 20px;
+  .itemsWrapper {
+    padding: 15px 0;
+    @include flex();
+    flex-direction: row;
+    justify-content: center;
+    &:hover a {
+      opacity: 0.5;
+    }
+    a {
+      width: 48%;
+      figure {
+        margin: 0;
+        padding: 0;
+        color: #666;
+        text-align: center;
+        font-family: $policeTitle;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// ******************   notre selection **************
+.selection {
+  text-align: center;
+  article {
+    padding: 0 15px;
+  }
+  figcaption {
+    font-family: $policeTitle;
+    font-weight: bold;
+  }
+
+  .prix {
+    font-weight: 700;
+  }
+  a {
+    display: inline-block;
+    background-color: $bgButtonVoirProduit;
+    width: 40%;
+    padding: 15px 0;
+  }
+}
