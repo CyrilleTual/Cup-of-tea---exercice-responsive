@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 
-/*
- _____ _       _           _ 
-|  __ | |     | |         | |
-| |  \| | ___ | |__   __ _| |
-| | __| |/ _ \| '_ \ / _` | |
-| |_\ | | (_) | |_) | (_| | |
- \____|_|\___/|_.__/ \__,_|_|*/
-
-// ************ variables ***********
-
-$policeDefault: "Open Sans", sans-serif;
+$policeDefault: "Open Sans", sans-serif; // police google importée
 $policeTitle: "Amaranth", sans-serif;
 
 $policeSize: (
@@ -24,31 +14,57 @@ $policeSize: (
   prixPageProduct: 4rem,
 );
 
-$txtColorDefault: #666;
-$bgDefault: #f2f2f2;
-$bgHeaderFooter: #96b011;
-$txtColorTitle: #96b011;
-$txtColorHeaderNavLink: #fff;
-$bgLienNavHover: rgba(255, 255, 255, 0.2);
-$traitsDerriereTitres: rgba(176, 144, 103, 0.3);
-$bgButtonVoirProduit: #b09067;
-$bgButtonVoirProduitHover: rgba(176, 144, 103, 0.75);
-$bgLivraisonEtFooter: rgba(0, 0, 0, 0.1);
-$bgPanierMobile: #96b011;
-$etoile: #ffdc0f;
-$coeur: #e7877a;
-$bgReassurance: #879e0f;
-$bgDansAbout: rgba(150, 176, 17, 02);
+$breakPoints: (
+  mobile: 768px,
+  // mode mobile jusqu'à 768px
+  tablet: 1025px,
+  // mode tablet jusqu'à 1024 px
+);
 
+// ***************************  Les couleurs du site *******************
+
+$txtColorDefault: #666; //Texte par défaut
+$bgDefault: #f2f2f2; //fond par défaut
+$bgHeaderFooter: #96b011; // fond header et footer
+$txtColorTitle: #96b011; //titre
+$txtColorHeaderNavLink: #fff; // texte header et lien nav
+$bgLienNavHover: rgba(255, 255, 255, 0.2); //fond lien nav en hover
+$traitsDerriereTitres: rgba(
+  176,
+  144,
+  103,
+  0.3
+); //Trait vert derrire certains titres
+$bgButtonVoirProduit: #b09067; //fond boutons "voir ce produit" et "ajouter au panier"
+$bgButtonVoirProduitHover: rgba(
+  176,
+  144,
+  103,
+  0.75
+); //fond boutons (hover) "voir ce produit" et "ajouter au panier"
+$bgLivraisonEtFooter: rgba(
+  0,
+  0,
+  0,
+  0.1
+); //fond "Livraison offerte..." et la 3ème partie du footer (avec le logo 3wa)
+$bgPanierMobile: #96b011; //fond élément panier (version mobile)
+$etoile: #ffdc0f; //couleur étoile
+$coeur: #e7877a; //couleur coeur
+$bgReassurance: #879e0f; //fond barre de rassurance
+$bgDansAbout: rgba(150, 176, 17, 02); //fond vert dans about
 $bgTitres: rgba(255, 255, 255, 0.2);
 
-// *******************  mixins ****************
+// *******************  mixins *******************************
+
+// **************** application d'une image de fond *******
 @mixin imageFond($url) {
   background-image: url($url);
   background-size: cover;
   background-position: center;
 }
 
+// ***************  Flex mobile firts ***************
 @mixin flex() {
   display: flex;
   flex-direction: column;
@@ -57,7 +73,17 @@ $bgTitres: rgba(255, 255, 255, 0.2);
   flex-wrap: wrap;
 }
 
-// *************************************************
+// ******************* fin des variables ******************
+
+/**********************************************************
+ _____ _       _           _ 
+|  __ | |     | |         | |
+| |  \| | ___ | |__   __ _| |
+| | __| |/ _ \| '_ \ / _` | |
+| |_\ | | (_) | |_) | (_| | |
+ \____|_|\___/|_.__/ \__,_|_|*/
+
+// *******************************************************
 
 * {
   box-sizing: border-box;
@@ -69,9 +95,8 @@ html {
 
 .container {
   max-width: 1100px;
+  // min-width: 200px;
   margin: auto;
-
-  /*background-color: pink;*/
 }
 
 body {
@@ -123,6 +148,26 @@ img {
   clear: both;
 }
 
+// ********************************************************************************
+// ****************   ligne horizontal pour les H3 *****************************
+h3 {
+  width: 100%;
+  overflow: hidden; // pour cacher ce qui va dépasser des 100% width
+  &::before,
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 50%; // si pads de texte ligne tout le long ( 2* 50 = 100 %)
+    margin: 0 2rem 0 -51%; // si texte occupe 100% la ligne est repoussee ecite passage à la ligne
+    vertical-align: middle;
+    border-bottom: 1px solid;
+  }
+  &::after {
+    margin: 0 -51% 0 2rem;
+  }
+}
+
+// **********************************************************************************
 /*
   _                    _           
  | |                  | |          
@@ -144,7 +189,11 @@ header {
   width: 120px;
   position: absolute;
   right: 0px;
-  // display: none;
+  display: none;
+  @media screen and (min-width: map-get($breakPoints, mobile)) {
+    display: block;
+    float: right;
+  }
 }
 
 .bandeau {
@@ -154,22 +203,48 @@ header {
 
 .blocHeader {
   @include imageFond("../img/bg.jpg");
-  padding-top: 100px;
+  padding-top: 120px;
   @include flex();
+  @media screen and (min-width: map-get($breakPoints, mobile)) {
+    padding: 20px 20px;
+  }
+  .headerHt {
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
+      @include flex();
+      flex-direction: row;
+      align-items: center;
+
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  // *****************  lien nav *****************
+
+  nav {
+    width: 100%;
+  }
   ul {
     @include flex();
     li {
       text-transform: uppercase;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       a {
         padding: 7px;
         &:hover {
           background-color: $bgLienNavHover;
         }
       }
+      @media screen and (min-width: map-get($breakPoints, mobile)) {
+        margin-bottom: 10px;
+      }
+    }
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
+      flex-direction: row;
+      margin-bottom: 0;
     }
   }
-
+  // *******************   pannier ****************
   .lienPanier {
     display: block;
     position: fixed;
@@ -183,15 +258,26 @@ header {
     box-shadow: -3px 4px 27px 12px rgba(0, 0, 0, 0.2);
     border-left: none;
     border-radius: 0px 200px 200px 0px;
-
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
+      display: flex;
+      position: static;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      padding-bottom: 0;
+    }
     i {
       border: solid white 1px;
       border-radius: 100% 100%;
       padding: 10px;
     }
-
     span.txt {
       display: none;
+      @media screen and (min-width: map-get($breakPoints, mobile)) {
+        display: inline;
+      }
+    }
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
     }
   }
 }
@@ -205,46 +291,90 @@ header {
                               
 */
 
-// ************  partie Haute *************
-
-.infosLarge {
-  background-color: $bgHeaderFooter;
+footer {
+  background-color: $bgReassurance;
 }
+
+// ************  partie Haute *************
 
 .infos {
   @include flex();
+
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+
   a {
-    display: inline-block;
+    display: block;
     width: 48%;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     align-items: center;
-  }
-  a:first-child::before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f023";
-    font-size: 50px;
-    display: block;
-    margin: auto;
-
-    // content: "\f023";
+    opacity: 0.5;
+    &::before {
+      font-family: FontAwesome;
+      font-size: 30px;
+      display: block;
+      margin: 10px auto 10px auto;
+    }
+    &:first-child::before {
+      content: "\f023";
+    }
+    &:nth-child(2)::before {
+      content: "\f0d1";
+    }
+    &:nth-child(3)::before {
+      content: "\f3d1";
+    }
+    &:nth-child(4)::before {
+      content: "\f879";
+    }
+    &:nth-child(5)::before {
+      content: "\f058";
+    }
+    &:hover {
+      opacity: 1;
+    }
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
+      width: 18%;
+    }
   }
 }
 
 // -**********************   partie milieu  ************************
 .liensLarge {
-  background-color: pink;
+  background-color: $bgHeaderFooter;
 }
 .liensFooter {
+  margin-top: 20px;
   text-align: center;
   @include flex();
+  .navFooter {
+    padding: 50px;
+    @media screen and (min-width: map-get($breakPoints, mobile)) {
+      width: 100%;
+      @include flex();
+      justify-content: center;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+  @media screen and (min-width: map-get($breakPoints, mobile)) {
+    width: 100%;
+  }
+  div {
+    margin-bottom: 40px;
+  }
   strong {
+    margin-top: 30px;
     color: white;
+    text-transform: uppercase;
+  }
+  li {
+    padding: 8px 0;
   }
   a {
     opacity: 0.5;
+
     &:hover {
       opacity: 1;
     }
@@ -252,7 +382,7 @@ header {
 }
 // *********************  partie basse **************
 .copyrightLarge {
-  background-color: $bgHeaderFooter;
+  background-color: $bgReassurance;
 }
 
 .copyright {
@@ -260,6 +390,8 @@ header {
   text-align: center;
   color: #fff;
   @include imageFond("../img/bg.jpg");
+  // pour creer layer assombrissant :
+  box-shadow: inset 0 0 0 100vmax $bgLivraisonEtFooter;
   img {
     width: 50px;
   }
@@ -267,7 +399,7 @@ header {
     text-decoration: underline;
   }
 }
-
+// *************************************************************************
 //                   _
 //                  (_)
 //   _ __ ___   __ _ _ _ __
@@ -278,12 +410,29 @@ header {
 main {
   line-height: 1.8;
 }
-
+// *********************   bandeau de pub  et slider *******************
 .page_index aside,
 .page_index .sliderSlick {
   display: none;
+  @media screen and (min-width: map-get($breakPoints, mobile)) {
+    display: block;
+    text-align: center;
+    strong {
+      display: block;
+      margin: 20px 0;
+      color: $txtColorTitle;
+      font-size: map-get($policeSize, noel);
+    }
+    small {
+      display: inline-block;
+      margin: 5px 0 30px 0;
+    }
+    .slick-dots li button:before {
+      font-size: 15px;
+    }
+  }
 }
-
+// *********************************************************************
 .choiseThe {
   margin-top: 20px;
   padding: 20px;
@@ -313,6 +462,8 @@ main {
 
 // ******************   notre selection **************
 .selection {
+  margin-top: 20px;
+  padding: 20px;
   text-align: center;
   article {
     padding: 0 15px;
@@ -330,5 +481,8 @@ main {
     background-color: $bgButtonVoirProduit;
     width: 40%;
     padding: 15px 0;
+    &:hover {
+      background-color: $bgButtonVoirProduitHover;
+    }
   }
 }
