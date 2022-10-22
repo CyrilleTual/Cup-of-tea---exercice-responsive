@@ -134,6 +134,10 @@ ul {
   list-style: none;
 }
 
+figure {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: $txtColorHeaderNavLink;
@@ -186,7 +190,7 @@ header {
 }
 
 .angleHt {
-  width: 120px;
+  width: 95px;
   position: absolute;
   right: 0px;
   display: none;
@@ -293,6 +297,7 @@ header {
 
 footer {
   background-color: $bgReassurance;
+  margin-top: 30px;
 }
 
 // ************  partie Haute *************
@@ -306,7 +311,7 @@ footer {
   a {
     display: block;
     width: 48%;
-    padding: 30px;
+    padding: 30px 0;
     text-align: center;
     align-items: center;
     opacity: 0.5;
@@ -353,7 +358,6 @@ footer {
     @media screen and (min-width: map-get($breakPoints, mobile)) {
       width: 100%;
       @include flex();
-      justify-content: center;
       flex-direction: row;
       align-items: flex-start;
     }
@@ -386,14 +390,17 @@ footer {
 }
 
 .copyright {
-  padding: 15px;
+  padding: 15px 15px 30px 15px;
   text-align: center;
   color: #fff;
   @include imageFond("../img/bg.jpg");
   // pour creer layer assombrissant :
   box-shadow: inset 0 0 0 100vmax $bgLivraisonEtFooter;
+  p {
+    margin-bottom: 5px;
+  }
   img {
-    width: 50px;
+    width: 60px;
   }
   a {
     text-decoration: underline;
@@ -439,6 +446,9 @@ main {
   .itemsWrapper {
     padding: 15px 0;
     @include flex();
+    @media screen and (min-width: map-get($breakPoints, tablet)) {
+      flex-wrap: nowrap;
+    }
     flex-direction: row;
     justify-content: center;
     &:hover a {
@@ -462,12 +472,26 @@ main {
 
 // ******************   notre selection **************
 .selection {
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 20px;
   text-align: center;
+
+  .wrapSelection {
+    @media screen and (min-width: map-get($breakPoints, tablet)) {
+      @include flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+  }
+
   article {
     padding: 0 15px;
+    @media screen and (min-width: map-get($breakPoints, tablet)) {
+      width: 33%;
+    }
   }
+
   figcaption {
     font-family: $policeTitle;
     font-weight: bold;
@@ -479,8 +503,8 @@ main {
   a {
     display: inline-block;
     background-color: $bgButtonVoirProduit;
-    width: 40%;
-    padding: 15px 0;
+    text-transform: uppercase;
+    padding: 15px 15px;
     &:hover {
       background-color: $bgButtonVoirProduitHover;
     }
