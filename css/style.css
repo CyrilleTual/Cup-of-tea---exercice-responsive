@@ -612,4 +612,71 @@ main {
 }
 .page_product p:nth-last-child(-n+2) {
   font-weight: bold;
+}
+
+.page_about section {
+  margin-top: 30px;
+  padding: 30px 20px;
+}
+.page_about section h1 {
+  font-size: 3.2rem;
+  text-align: center;
+}
+.page_about section h2 {
+  color: #666;
+  font-size: 2.5rem;
+  margin: 0px;
+  text-align: left;
+}
+.page_about section h3 {
+  text-align: left;
+}
+.page_about section .imgLeft {
+  float: left;
+  margin-right: 20px;
+}
+.page_about section .imgRight {
+  float: right;
+  margin-left: 20px;
+}
+.page_about section .concept {
+  background-color: rgba(150, 176, 17, 0.2);
+  padding: 45px 15px;
+  text-align: center;
+}
+.page_about section .concept h3 {
+  color: #666;
+  text-align: center;
+}
+.page_about section .concept h3::before {
+  content: "";
+  background-size: cover;
+  position: relative;
+  margin: 20px auto 20px auto;
+  padding: 5px;
+  display: block;
+  width: 70px;
+  height: 70px;
+  display: block;
+  background-image: url("../img/concept/1.svg");
+}
+.page_about section .concept h3.deux::before {
+  background-image: url("../img/concept/2.svg");
+}
+.page_about section .concept h3.trois::before {
+  background-image: url("../img/concept/3.svg");
+}
+@media screen and (min-width: 1025px) {
+  .page_about section .concept {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .page_about section .concept div {
+    width: 32%;
+  }
 }/*# sourceMappingURL=style.css.map */
