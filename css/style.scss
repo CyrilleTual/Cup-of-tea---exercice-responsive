@@ -217,7 +217,6 @@ header {
       @include flex();
       flex-direction: row;
       align-items: center;
-
       width: 100%;
       padding: 0;
     }
@@ -418,6 +417,7 @@ main {
   line-height: 1.8;
 }
 // *********************   bandeau de pub  et slider *******************
+
 .page_index aside,
 .page_index .sliderSlick {
   display: none;
@@ -430,15 +430,23 @@ main {
       color: $txtColorTitle;
       font-size: map-get($policeSize, noel);
     }
-    small {
-      display: inline-block;
-      margin: 5px 0 30px 0;
+    .slick-prev {
+      left: 20px;
+      z-index: 1;
+    }
+    .slick-next {
+      right: 20px;
     }
     .slick-dots li button:before {
       font-size: 15px;
     }
+    small {
+      display: inline-block;
+      margin: 5px 0 30px 0;
+    }
   }
 }
+
 // *********************************************************************
 .choiseThe {
   margin-top: 20px;

@@ -376,14 +376,23 @@ main {
     color: #96b011;
     font-size: 4rem;
   }
-  .page_index aside small,
-.page_index .sliderSlick small {
-    display: inline-block;
-    margin: 5px 0 30px 0;
+  .page_index aside .slick-prev,
+.page_index .sliderSlick .slick-prev {
+    left: 20px;
+    z-index: 1;
+  }
+  .page_index aside .slick-next,
+.page_index .sliderSlick .slick-next {
+    right: 20px;
   }
   .page_index aside .slick-dots li button:before,
 .page_index .sliderSlick .slick-dots li button:before {
     font-size: 15px;
+  }
+  .page_index aside small,
+.page_index .sliderSlick small {
+    display: inline-block;
+    margin: 5px 0 30px 0;
   }
 }
 
