@@ -61,7 +61,7 @@ $bgTitres: rgba(255, 255, 255, 0.2);
 @mixin imageFond($url) {
   background-image: url($url);
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
 }
 
 // ***************  Flex mobile firts ***************
@@ -182,7 +182,7 @@ img {
 */
 
 header {
-  // @include imageFond("../img/bg.jpg");
+  @include imageFond("../img/bg.jpg");
   background-color: $bgHeaderFooter;
   text-align: center;
   color: $txtColorHeaderNavLink;
@@ -208,7 +208,7 @@ header {
 }
 
 .blocHeader {
-  @include imageFond("../img/bg.jpg");
+  // @include imageFond("../img/bg.jpg");
   padding: 120px 0 20px 0;
   @include flex();
   @media screen and (min-width: map-get($breakPoints, mobile)) {
