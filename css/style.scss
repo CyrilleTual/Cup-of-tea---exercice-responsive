@@ -142,6 +142,7 @@ img {
 }
 
 .button {
+  color: $txtColorHeaderNavLink;
   background-color: $bgButtonVoirProduit;
   text-transform: uppercase;
   padding: 20px 20px;
@@ -297,7 +298,13 @@ header {
 */
 
 footer {
-  background-color: $bgReassurance;
+  //background-color: $bgReassurance;
+  @include imageFond("../img/bg.jpg");
+  background-size: auto auto;
+  background-repeat: no-repeat;
+
+  background-color: $bgHeaderFooter;
+
   margin-top: 30px;
   a {
     color: $txtColorHeaderNavLink;
@@ -306,8 +313,13 @@ footer {
 
 // ************  partie Haute *************
 
+.hautLarge {
+  background-color: $bgReassurance;
+}
+
 .infos {
   @include flex();
+  background-color: $bgReassurance;
 
   flex-direction: row;
   justify-content: space-around;
@@ -351,9 +363,7 @@ footer {
 }
 
 // -**********************   partie milieu  ************************
-.liensLarge {
-  background-color: $bgHeaderFooter;
-}
+
 .liensFooter {
   margin-top: 20px;
   text-align: center;
@@ -392,16 +402,16 @@ footer {
 }
 // *********************  partie basse **************
 .copyrightLarge {
-  background-color: $bgReassurance;
+  box-shadow: inset 0 0 0 100vmax $bgLivraisonEtFooter;
 }
 
 .copyright {
   padding: 15px 15px 30px 15px;
   text-align: center;
   color: #fff;
-  @include imageFond("../img/bg.jpg");
+  // @include imageFond("../img/bg.jpg");
   // pour creer layer assombrissant :
-  box-shadow: inset 0 0 0 100vmax $bgLivraisonEtFooter;
+  // box-shadow: inset 0 0 0 100vmax $bgLivraisonEtFooter;
   p {
     margin-bottom: 5px;
   }
