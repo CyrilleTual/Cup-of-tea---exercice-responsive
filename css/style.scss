@@ -60,7 +60,7 @@ $bgTitres: rgba(255, 255, 255, 0.2);
 // **************** application d'une image de fond *******
 @mixin imageFond($url) {
   background-image: url($url);
-  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center bottom;
 }
 
@@ -118,6 +118,9 @@ h3 {
   font-family: $policeTitle;
   color: $txtColorTitle;
 }
+h1 {
+  font-size: map-get($policeSize, grosTitre);
+}
 
 ul {
   padding: 10px 0px;
@@ -162,12 +165,12 @@ img {
     content: "";
     display: inline-block;
     width: 100%; // si pas de texte
-    margin: 0 2rem 0 -100%; // si texte occupe 100% la ligne est repoussee ecite passage à la ligne
+    margin: 0 1rem 0 -100%; // si texte occupe 100% la ligne est repoussee ecite passage à la ligne
     vertical-align: middle;
     border-bottom: 1px solid;
   }
   &::after {
-    margin: 0 -100% 0 2rem;
+    margin: 0 -100% 0 1rem;
   }
 }
 
@@ -210,7 +213,7 @@ header {
 
 .blocHeader {
   // @include imageFond("../img/bg.jpg");
-  padding: 120px 0 20px 0;
+  padding: 130px 0 0px 0;
   @include flex();
   @media screen and (min-width: map-get($breakPoints, mobile)) {
     padding: 20px 20px;
@@ -266,6 +269,7 @@ header {
     border-radius: 0px 200px 200px 0px;
     @media screen and (min-width: map-get($breakPoints, mobile)) {
       display: flex;
+      align-items: center;
       position: static;
       background-color: transparent;
       border: none;
@@ -278,6 +282,10 @@ header {
       padding: 10px;
     }
     span.txt {
+      font-size: map-get($policeSize, body);
+      vertical-align: middle;
+      margin-right: 10px;
+
       display: none;
       @media screen and (min-width: map-get($breakPoints, mobile)) {
         display: inline;
@@ -298,13 +306,8 @@ header {
 */
 
 footer {
-  //background-color: $bgReassurance;
   @include imageFond("../img/bg.jpg");
-  background-size: auto auto;
-  background-repeat: no-repeat;
-
   background-color: $bgHeaderFooter;
-
   margin-top: 30px;
   a {
     color: $txtColorHeaderNavLink;
@@ -357,7 +360,7 @@ footer {
       opacity: 1;
     }
     @media screen and (min-width: map-get($breakPoints, mobile)) {
-      width: 18%;
+      width: 15%;
     }
   }
 }
@@ -376,18 +379,23 @@ footer {
       flex-direction: row;
       align-items: flex-start;
     }
+    @media screen and (min-width: map-get($breakPoints, tablet)) {
+      justify-content: space-around;
+    }
   }
   @media screen and (min-width: map-get($breakPoints, mobile)) {
     width: 100%;
   }
-  div {
-    margin-bottom: 40px;
-  }
+  // div {
+  //   margin-bottom: 40px;
+  // }
   strong {
     margin-top: 30px;
     color: white;
     text-transform: uppercase;
     font-family: $policeTitle;
+    font-weight: normal;
+    font-size: map-get($policeSize, petitTitre);
   }
   li {
     padding: 8px 0;
@@ -436,11 +444,11 @@ main {
 // *********************   bandeau de pub  et slider *******************
 
 .page_index {
-  &h1,
-  &h2 {
+  h1,
+  h2 {
     font-size: map-get($policeSize, grosTitre);
   }
-  &h3 {
+  h3 {
     font-size: map-get($policeSize, moyenTitre);
   }
 }
@@ -456,6 +464,8 @@ main {
       margin: 20px 0;
       color: $txtColorTitle;
       font-size: map-get($policeSize, noel);
+      font-family: $policeTitle;
+      font-weight: normal;
     }
     .slick-prev {
       left: 20px;
@@ -533,7 +543,8 @@ main {
 
   figcaption {
     font-family: $policeTitle;
-    font-weight: bold;
+
+    font-size: map-get($policeSize, petitTitre);
   }
 
   .prix {
@@ -632,6 +643,9 @@ main {
         margin-top: 0px;
         text-align: right;
       }
+      .text {
+        color: $bgHeaderFooter;
+      }
     }
     @media screen and (min-width: map-get($breakPoints, mobile)) {
       flex-direction: row;
@@ -646,7 +660,7 @@ main {
     }
   }
 
-  form {
+  .formulaires {
     width: 100%;
     select {
       width: 100%;
@@ -667,6 +681,8 @@ main {
 
     button {
       @extend .button;
+      margin-top: 30px;
+      font-size: map-get($policeSize, body);
       width: 100%;
       border: none;
       color: #f2f2f2;
@@ -675,7 +691,7 @@ main {
       width: fit-content;
       color: $txtColorTitle;
       background-color: #fff;
-      margin-right: 0;
+      margin: 10px 0 0 0;
       text-transform: none;
       &::before {
         font-family: FontAwesome;

@@ -11,19 +11,14 @@ choix.addEventListener("change", function (e) {
 
 // fonction principale
 function majPrix() {
-  switch (choix.value) {
-    case "100g":
-      prix = 9;
-      break;
-    case "500g":
-      prix = 40;
-      break;
-    case "1kg":
-      prix = 75;
-      break;
-  }
-  affichage.innerText = `${prix.toFixed(2)}€`;
+  affichage.innerText = Number(choix.value).toFixed(2) + " €";
 }
 
 // lancement de la fonction au chargement  de la page
 majPrix();
+
+// ajout aux favoris
+
+function pop() {
+  alert("liste d'entrée mise à jour");
+}

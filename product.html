@@ -77,7 +77,7 @@ ___  ___      _
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star unchecked "></span><br>
-                            <span>Voir les 56 avis</span>
+                            <span class="text">Voir les 56 avis</span>
                         </a>
 
                     </aside>
@@ -85,16 +85,26 @@ ___  ___      _
 
 
                 <img src="./img/product/product3_big.jpg" alt="Blue of london" />
-                <form action="post">
-                    <select name="panier" id="panier">
-                        <option value="100g">Sachet de 100g</option>
-                        <option value="500g">Sachet de 500g</option>
-                        <option value="1kg">Sachet de 1kg</option>
-                    </select>
-                    <div id="affPrix"></div>
-                    <button>Ajouter au pannier</button>
-                    <button class="wishList">Ajouter à ma liste d'entrée</button>
-                </form>
+                <div class="formulaires">
+                    <form action="">
+                        <select name="panier" id="panier">
+                            <option value="9">Sachet de 100g</option>
+                            <option value="40">Sachet de 500g</option>
+                            <option value="75">Sachet de 1kg</option>
+                        </select>
+                        <div id="affPrix"></div>
+                        <button>Ajouter au pannier</button>
+
+                    </form>
+                    <form action="" id="wish">
+                        <button class="wishList" onClick=" pop()">Ajouter à ma liste d'entrée</button>
+                    </form>
+                    <div id="alertPanel"></div>
+                </div>
+
+
+
+
             </div>
             <div>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat soluta rem ipsam sequi quidem ipsum
