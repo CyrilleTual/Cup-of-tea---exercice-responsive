@@ -11,7 +11,7 @@ choix.addEventListener("change", function (e) {
 
 // fonction principale
 function majPrix() {
-  affichage.innerText = Number(choix.value).toFixed(2) + " €";
+  affichage.innerText = Number(choix.value).toFixed(2).replace(".", ",") + " €";
 }
 
 // lancement de la fonction au chargement  de la page
